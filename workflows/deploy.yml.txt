@@ -3,14 +3,17 @@ name: Deploy Vite App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Adjust if your default branch is different
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false  # Required for gh-pages deploy
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
